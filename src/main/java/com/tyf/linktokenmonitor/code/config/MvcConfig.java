@@ -31,8 +31,7 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
-        registry.addViewController("/hello").setViewName("hello");
-//        registry.addViewController("/accessDenied").setViewName("exception/403");
+        registry.addViewController("/index").setViewName("index");
     }
 
     @Override

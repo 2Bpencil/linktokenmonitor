@@ -10,7 +10,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 
-public class HttpClient {
+public class HttpClientUtil {
     /**
      *
      * @param addr  账户信息
@@ -61,6 +61,7 @@ public class HttpClient {
 
     public static void main(String[] args) {
         System.out.println(getDataByAddr("0x90bdf09b3f5718b752939424789d26c23657b1d0",0));//
+        System.out.println(getDataByAddr("0x90bdf09b3f5718b752939424789d26c23657b1d0",1));//
     }
 
 }

@@ -8,9 +8,9 @@ public class AccountInfo {
     private String accountNum;
     private String transTime;
     private String ExpenditureIncomeState;
-    private Integer amount;
-    private Integer totalAmount;
-    private Boolean warn;
+    private String amount;
+    private String totalAmount;
+    private String warn;
 
     public String getName() {
         return name;
@@ -44,27 +44,27 @@ public class AccountInfo {
         ExpenditureIncomeState = expenditureIncomeState;
     }
 
-    public Integer getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 
-    public Integer getTotalAmount() {
+    public String getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(Integer totalAmount) {
+    public void setTotalAmount(String totalAmount) {
         this.totalAmount = totalAmount;
     }
 
-    public Boolean isWarn() {
+    public String getWarn() {
         return warn;
     }
 
-    public void setWarn(Boolean warn) {
+    public void setWarn(String warn) {
         this.warn = warn;
     }
 }

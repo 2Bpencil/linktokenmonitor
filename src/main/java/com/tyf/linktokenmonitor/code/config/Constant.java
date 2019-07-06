@@ -7,6 +7,9 @@ package com.tyf.linktokenmonitor.code.config;
 
 import com.tyf.linktokenmonitor.code.entity.AccountInfo;
 import com.tyf.linktokenmonitor.code.entity.DataConfig;
+import com.tyf.linktokenmonitor.code.utils.HttpClientUtil;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,8 +48,24 @@ public class Constant implements ApplicationRunner {
 
         Stream.of(linktokens.split(";")).forEach(account->{
             AccountInfo accountInfo = new AccountInfo();
-            accountInfo.setAccountNum(account.split("|")[1]);
-            accountInfo.setName(account.split("|")[0]);
+            accountInfo.setAccountNum(account.split("\\|")[1]);
+            accountInfo.setName(account.split("\\|")[0]);
+
+            String transactionRecords = HttpClientUtil.getDataByAddr(accountInfo.getAccountNum(),0);
+            JSONObject transactionRecordsObj = JSONObject.fromObject(transactionRecords);
+            JSONArray transactionRecordsArr = (JSONArray)((JSONObject)transactionRecordsObj.get("data")).get("records");
+            JSONObject lastTransaction = (JSONObject)transactionRecordsArr.get(0);
+            accountInfo.setAmount(lastTransaction.get("amount").toString());
+            accountInfo.setTransTime(lastTransaction.get("trans_time").toString());
+            if(accountInfo.getAccountNum().equals(lastTransaction.get("from").toString())){
+                accountInfo.setExpenditureIncomeState("转出");
+            }else{
+                accountInfo.setExpenditureIncomeState("转入");
+            }
+            String accountStr = HttpClientUtil.getDataByAddr(accountInfo.getAccountNum(),1);
+            JSONObject accountInfoObj = JSONObject.fromObject(accountStr);
+            accountInfo.setTotalAmount(((JSONObject)accountInfoObj.get("data")).get("balance").toString());
+
             list.add(accountInfo);
 
         } );
