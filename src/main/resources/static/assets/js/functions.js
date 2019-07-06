@@ -2,7 +2,6 @@ $(document).ready(function(){
     /* --------------------------------------------------------
 	Template Settings
     -----------------------------------------------------------*/
-    
     var settings =  '<a id="settings" href="#changeSkin" data-toggle="modal">' +
 			'<i class="fa fa-gear"></i> Change Skin' +
 		    '</a>' +   
@@ -70,7 +69,7 @@ $(document).ready(function(){
 	$('body').attr('id', skin);
 	$('#changeSkin').modal('hide');
     });
-    
+
     /* --------------------------------------------------------
 	Components
     -----------------------------------------------------------*/
@@ -134,6 +133,7 @@ $(document).ready(function(){
             $('#sidebar').toggleClass('toggled');
             //$('#content').toggleClass('m-0');
         });
+        $("#menu-toggle").click();//隐藏菜单部分
          
         /* Active Menu */
         $('#sidebar .menu-item').hover(function(){
