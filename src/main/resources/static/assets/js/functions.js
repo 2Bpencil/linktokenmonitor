@@ -127,13 +127,15 @@ $(document).ready(function(){
     -----------------------------------------------------------*/
     (function(){
         /* Menu Toggle */
-        $('body').on('click touchstart', '#menu-toggle', function(e){
+        /*$('body').on('click touchstart', '#menu-toggle', function(e){
             e.preventDefault();
             $('html').toggleClass('menu-active');
             $('#sidebar').toggleClass('toggled');
             //$('#content').toggleClass('m-0');
-        });
-        $("#menu-toggle").click();//隐藏菜单部分
+        });*/
+        $("#menu-toggle").hide();//隐藏菜单部分
+        $('html').toggleClass('menu-active');
+        $('#sidebar').toggleClass('toggled');
          
         /* Active Menu */
         $('#sidebar .menu-item').hover(function(){

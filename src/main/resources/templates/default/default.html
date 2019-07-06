@@ -29,7 +29,7 @@
 <!-- 新消息 以及 搜索 -->
 <header id="header" class="media" th:fragment="header">
     <a href="" id="menu-toggle"></a>
-    <a class="logo pull-left" >MONITOR 1.0</a>
+    <!--<a class="logo pull-left" >MONITOR 1.0</a>-->
 
     <div class="media-body">
         <div class="media" id="top-menu">
@@ -57,11 +57,11 @@
 
 <!-- Breadcrumb 面包屑 -->
 <div th:fragment="breadcrumb(title)">
-    <ol class="breadcrumb hidden-xs"  >
+    <!--<ol class="breadcrumb hidden-xs"  >
         <li><a href="#">Home</a></li>
         <li><a href="#">Library</a></li>
         <li class="active">Data</li>
-    </ol>
+    </ol>-->
 
     <h4 class="page-title" th:text="${title}" >DASHBOARD</h4>
 </div>
@@ -311,7 +311,7 @@
             };
             //获得消息事件
             socket.onmessage = function(msg) {
-                console.log(msg);
+                console.log(msg.data);
                 //发现消息进入    调后台获取
 
             };

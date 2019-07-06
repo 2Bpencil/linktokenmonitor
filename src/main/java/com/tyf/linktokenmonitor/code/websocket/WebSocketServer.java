@@ -9,10 +9,12 @@ import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.concurrent.CopyOnWriteArraySet;
 
-@ServerEndpoint(value = "/websocket",configurator = HttpSessionConfigurator.class)
+
+@ServerEndpoint(value = "/websocket")
 @Component
 public class WebSocketServer {
-    private static final Logger log = LoggerFactory.getLogger(WebSocketServer.class);
+
+    private final static Logger log = LoggerFactory.getLogger(WebSocketServer.class);
 
     //静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
     private static int onlineCount = 0;
@@ -27,8 +29,8 @@ public class WebSocketServer {
     @OnOpen
     public void onOpen(Session session) {
         this.session = session;
-        webSocketSet.add(this);     //加入set中
-        addOnlineCount();           //在线数加1
+        webSocketSet.add(this); //加入set中
+        addOnlineCount(); //在线数加1
         log.info("有新连接加入！当前在线人数为" + getOnlineCount());
         try {
             sendMessage("连接成功");
@@ -36,14 +38,20 @@ public class WebSocketServer {
             log.error("websocket IO异常");
         }
     }
+// //连接打开时执行
+// @OnOpen
+// public void onOpen(@PathParam("user") String user, Session session) {
+// currentUser = user;
+// System.out.println("Connected ... " + session.getId());
+// }
 
     /**
      * 连接关闭调用的方法
      */
     @OnClose
     public void onClose() {
-        webSocketSet.remove(this);  //从set中删除
-        subOnlineCount();           //在线数减1
+        webSocketSet.remove(this); //从set中删除
+        subOnlineCount(); //在线数减1
         log.info("有一连接关闭！当前在线人数为" + getOnlineCount());
     }
 

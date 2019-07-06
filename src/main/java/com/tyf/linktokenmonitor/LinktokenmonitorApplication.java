@@ -9,7 +9,6 @@ public class LinktokenmonitorApplication {
     public static void main(String[] args) {
         SpringApplication.run(LinktokenmonitorApplication.class, args);
 
-        System.out.println("aaa");
 
     }
 

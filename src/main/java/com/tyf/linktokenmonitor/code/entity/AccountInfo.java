@@ -10,6 +10,7 @@ public class AccountInfo {
     private String ExpenditureIncomeState;
     private Integer amount;
     private Integer totalAmount;
+    private Boolean warn;
 
     public String getName() {
         return name;
@@ -57,5 +58,13 @@ public class AccountInfo {
 
     public void setTotalAmount(Integer totalAmount) {
         this.totalAmount = totalAmount;
+    }
+
+    public Boolean isWarn() {
+        return warn;
+    }
+
+    public void setWarn(Boolean warn) {
+        this.warn = warn;
     }
 }
