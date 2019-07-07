@@ -8,6 +8,7 @@ package com.tyf.linktokenmonitor.code.config;
 import com.tyf.linktokenmonitor.code.entity.AccountInfo;
 import com.tyf.linktokenmonitor.code.entity.DataConfig;
 import com.tyf.linktokenmonitor.code.utils.HttpClientUtil;
+import com.tyf.linktokenmonitor.code.utils.MusicUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
@@ -17,7 +18,11 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ClassUtils;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +50,6 @@ public class Constant implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         String linktokens = data.getLinktokens();
-
         Stream.of(linktokens.split(";")).forEach(account->{
             AccountInfo accountInfo = new AccountInfo();
             accountInfo.setAccountNum(account.split("\\|")[1]);
@@ -67,7 +71,8 @@ public class Constant implements ApplicationRunner {
             accountInfo.setTotalAmount(((JSONObject)accountInfoObj.get("data")).get("balance").toString());
 
             list.add(accountInfo);
-
         } );
+
+
     }
 }

@@ -20,6 +20,7 @@
     <link th:href="@{/assets/css/calendar.css}" rel="stylesheet">
     <link th:href="@{/assets/css/style.css}" rel="stylesheet">
     <link th:href="@{/assets/css/icons.css}" rel="stylesheet">
+    <link th:href="@{/assets/css/media-player.css}" rel="stylesheet">
     <link th:href="@{/assets/css/generics.css}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" th:each="cssPath,status:${#strings.setSplit(cssPaths,',')}" th:href="@{${cssPath}}"/>
@@ -33,13 +34,7 @@
 
     <div class="media-body">
         <div class="media" id="top-menu">
-            <div class="pull-left tm-icon">
-                <a data-drawer="messages" class="drawer-toggle" href="">
-                    <i class="sa-top-message"></i>
-                    <i class="n-count animated"  id="warnNum">5</i>
-                    <span>Messages</span>
-                </a>
-            </div>
+
 
             <div id="time" class="pull-right">
                 <span id="hours"></span>
@@ -57,11 +52,7 @@
 
 <!-- Breadcrumb 面包屑 -->
 <div th:fragment="breadcrumb(title)">
-    <!--<ol class="breadcrumb hidden-xs"  >
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Library</a></li>
-        <li class="active">Data</li>
-    </ol>-->
+
 
     <h4 class="page-title" th:text="${title}" >DASHBOARD</h4>
 </div>
@@ -208,7 +199,9 @@
     <script th:src="@{/assets/js/validation/validate.min.js}"></script> <!-- jQuery Form Validation Library -->
     <script th:src="@{/assets/js/validation/validationEngine.min.js}"></script> <!-- jQuery Form Validation Library - requirred with above js -->
     <script th:src="@{/assets/js/icheck.js}"></script> <!-- Custom Checkbox + Radio -->
-
+    <!-- Media -->
+    <script th:src="@{/assets/js/media-player.min.js}" ></script> <!-- Video Player -->
+    <script th:src="@{/assets/js/pirobox.min.js}"></script> <!-- Lightbox -->
     <!-- UX -->
     <script th:src="@{/assets/js/scroll.min.js}"></script> <!-- Custom Scrollbar -->
     <!-- Text Editor -->

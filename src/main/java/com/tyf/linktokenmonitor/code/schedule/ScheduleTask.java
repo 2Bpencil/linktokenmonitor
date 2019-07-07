@@ -3,6 +3,7 @@ package com.tyf.linktokenmonitor.code.schedule;
 import com.tyf.linktokenmonitor.code.config.Constant;
 import com.tyf.linktokenmonitor.code.entity.AccountInfo;
 import com.tyf.linktokenmonitor.code.utils.HttpClientUtil;
+import com.tyf.linktokenmonitor.code.utils.MusicUtil;
 import com.tyf.linktokenmonitor.code.websocket.WebSocketServer;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -40,6 +41,7 @@ public class ScheduleTask {
                 ai.setWarn("0");
             }else{
                 ai.setWarn("1");
+                new MusicUtil().play();
             }
             ai.setTotalAmount(((JSONObject)accountInfoObj.get("data")).get("balance").toString());
 

@@ -5,19 +5,19 @@ function handlePushMsg(msg){
 
     var jsonObj = eval('(' + msg + ')')
 
-    console.log(jsonObj);
+    // console.log(jsonObj);
 
     $('#'+jsonObj.accountNum+'_amount').html(jsonObj.amount);
     $('#'+jsonObj.accountNum+'_expenditureIncomeState').html(jsonObj.expenditureIncomeState);
     $('#'+jsonObj.accountNum+'_totalAmount').html(jsonObj.totalAmount);
     $('#'+jsonObj.accountNum+'_transTime').html(jsonObj.transTime);
-    if(jsonObj.warn == 0){//正常不用警告
-
-    }else{//发出警告
-
+    if(jsonObj.warn != 0){//发出警告
+        $('#'+jsonObj.accountNum+'_warn').show();
     }
 
 }
+
+
 
 if(typeof(WebSocket) == "undefined") {
     console.log("您的浏览器不支持WebSocket");
